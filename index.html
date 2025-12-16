@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hub de Links - Tema Laranja e Amarelo</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Atualizado para versão mais recente do FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -53,20 +54,6 @@
             margin-bottom: 30px;
         }
         
-        /* 
-        PARA USAR UMA LOGO COMO IMAGEM:
-        1. Defina a classe .logo como uma tag <img>
-        2. Ajuste o max-width conforme necessário
-        */
-        .logo {
-            max-width: 150px;
-            height: auto;
-            margin: 0 auto;
-            display: block;
-            filter: drop-shadow(0 5px 10px rgba(255, 107, 53, 0.3));
-        }
-        
-        /* Estilo para logo em texto (use se não tiver imagem) */
         .logo-text {
             font-size: 36px;
             font-weight: 800;
@@ -95,11 +82,6 @@
             box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
         }
 
-        /* 
-        PARA SUBSTITUIR A FOTO DE PERFIL:
-        1. Substitua o src da imagem abaixo pela URL da sua foto
-        2. Mantenha as classes para preservar o estilo
-        */
         .profile-photo img {
             width: 100%;
             height: 100%;
@@ -131,6 +113,7 @@
             justify-content: center;
             gap: 20px;
             margin-top: 25px;
+            flex-wrap: wrap;
         }
 
         .social-icon {
@@ -145,6 +128,7 @@
             font-size: 22px;
             text-decoration: none;
             transition: all 0.3s;
+            flex-shrink: 0;
         }
 
         .social-icon:hover {
@@ -165,13 +149,14 @@
             align-items: center;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 16px;
-            padding: 22px;
+            padding: 18px 16px;
             text-decoration: none;
             color: var(--texto-claro);
             transition: all 0.3s ease;
             border: 1px solid transparent;
             position: relative;
             overflow: hidden;
+            min-height: 80px;
         }
 
         .link-item::before {
@@ -192,31 +177,42 @@
         }
 
         .link-icon {
-            font-size: 24px;
-            margin-right: 20px;
+            font-size: 22px;
+            margin-right: 16px;
             width: 50px;
             height: 50px;
+            min-width: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, var(--laranja-principal), var(--laranja-claro));
+            flex-shrink: 0;
         }
 
         .link-text {
             flex-grow: 1;
             text-align: left;
+            overflow: hidden;
         }
 
         .link-text h3 {
-            font-size: 20px;
+            font-size: 18px;
             margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .link-text p {
-            font-size: 15px;
+            font-size: 14px;
             color: rgba(255, 255, 255, 0.7);
             margin: 0;
+            line-height: 1.4;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
         }
 
         .footer {
@@ -228,14 +224,62 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Responsividade */
-        @media (max-width: 600px) {
+        /* RESPONSIVIDADE ATUALIZADA */
+        
+        /* Tablets (768px a 1024px) */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 90%;
+            }
+            
+            .card {
+                padding: 35px 25px;
+            }
+            
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .profile-info h1 {
+                font-size: 30px;
+            }
+            
+            .profile-info p {
+                font-size: 17px;
+            }
+            
+            .link-item {
+                padding: 16px 14px;
+                min-height: 75px;
+            }
+            
+            .link-icon {
+                width: 48px;
+                height: 48px;
+                min-width: 48px;
+                margin-right: 14px;
+                font-size: 20px;
+            }
+            
+            .link-text h3 {
+                font-size: 17px;
+            }
+            
+            .link-text p {
+                font-size: 13.5px;
+            }
+        }
+        
+        /* Tablets pequenos e celulares grandes (600px a 768px) */
+        @media (max-width: 768px) {
             .card {
                 padding: 30px 20px;
+                border-radius: 20px;
             }
             
             .logo-text {
-                font-size: 28px;
+                font-size: 32px;
             }
             
             .profile-photo {
@@ -249,16 +293,238 @@
             
             .profile-info p {
                 font-size: 16px;
+                max-width: 95%;
+            }
+            
+            .social-icons {
+                gap: 15px;
+            }
+            
+            .social-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
             }
             
             .link-item {
-                padding: 18px;
+                padding: 16px 14px;
+                min-height: 70px;
+                border-radius: 14px;
+            }
+            
+            .link-icon {
+                width: 45px;
+                height: 45px;
+                min-width: 45px;
+                margin-right: 12px;
+                font-size: 19px;
+            }
+            
+            .link-text h3 {
+                font-size: 16px;
+            }
+            
+            .link-text p {
+                font-size: 13px;
+                -webkit-line-clamp: 2;
+            }
+        }
+        
+        /* Celulares (480px a 600px) */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                max-width: 100%;
+            }
+            
+            .card {
+                padding: 25px 18px;
+                border-radius: 18px;
+            }
+            
+            .logo-container {
+                margin-bottom: 25px;
+            }
+            
+            .logo-text {
+                font-size: 28px;
+            }
+            
+            .profile-photo {
+                width: 130px;
+                height: 130px;
+                margin-bottom: 20px;
+            }
+            
+            .profile-info h1 {
+                font-size: 26px;
+            }
+            
+            .profile-info p {
+                font-size: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .social-icons {
+                gap: 12px;
+                margin-top: 20px;
             }
             
             .social-icon {
                 width: 45px;
                 height: 45px;
-                font-size: 20px;
+                font-size: 19px;
+            }
+            
+            .links-section {
+                gap: 16px;
+                margin-top: 25px;
+            }
+            
+            .link-item {
+                padding: 14px 12px;
+                min-height: 65px;
+                border-radius: 12px;
+            }
+            
+            .link-icon {
+                width: 42px;
+                height: 42px;
+                min-width: 42px;
+                margin-right: 10px;
+                font-size: 18px;
+            }
+            
+            .link-text h3 {
+                font-size: 15px;
+            }
+            
+            .link-text p {
+                font-size: 12.5px;
+                line-height: 1.3;
+                -webkit-line-clamp: 2;
+            }
+            
+            .footer {
+                margin-top: 30px;
+                padding-top: 15px;
+                font-size: 13px;
+            }
+        }
+        
+        /* Celulares pequenos (até 480px) */
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+                align-items: flex-start;
+            }
+            
+            .card {
+                padding: 22px 15px;
+                border-radius: 16px;
+            }
+            
+            .logo-text {
+                font-size: 26px;
+            }
+            
+            .profile-photo {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .profile-info h1 {
+                font-size: 24px;
+            }
+            
+            .profile-info p {
+                font-size: 14px;
+                margin-bottom: 18px;
+            }
+            
+            .social-icons {
+                gap: 10px;
+            }
+            
+            .social-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 18px;
+            }
+            
+            .links-section {
+                gap: 14px;
+            }
+            
+            .link-item {
+                padding: 12px 10px;
+                min-height: 60px;
+                border-radius: 10px;
+            }
+            
+            .link-icon {
+                width: 40px;
+                height: 40px;
+                min-width: 40px;
+                margin-right: 10px;
+                font-size: 17px;
+            }
+            
+            .link-text h3 {
+                font-size: 14px;
+            }
+            
+            .link-text p {
+                font-size: 12px;
+                -webkit-line-clamp: 2;
+            }
+            
+            .footer {
+                font-size: 12px;
+                margin-top: 25px;
+            }
+        }
+        
+        /* Telas muito pequenas (até 360px) */
+        @media (max-width: 360px) {
+            .logo-text {
+                font-size: 24px;
+            }
+            
+            .profile-photo {
+                width: 110px;
+                height: 110px;
+            }
+            
+            .profile-info h1 {
+                font-size: 22px;
+            }
+            
+            .link-item {
+                padding: 10px 8px;
+            }
+            
+            .link-icon {
+                width: 38px;
+                height: 38px;
+                min-width: 38px;
+                font-size: 16px;
+            }
+            
+            .link-text h3 {
+                font-size: 13px;
+            }
+            
+            .link-text p {
+                font-size: 11px;
+            }
+            
+            .social-icon {
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
@@ -266,66 +532,38 @@
 <body>
     <div class="container">
         <div class="card">
-            <!-- LOGO - SUBSTITUA AQUI SUA LOGO -->
             <div class="logo-container">
-                <!-- 
-                OPÇÃO 1: Logo como imagem (recomendado)
-                Substitua a linha abaixo pela sua logo em imagem:
-                <img src="URL_DA_SUA_LOGO_AQUI" alt="Logo" class="logo">
-                -->
                 <div class="logo-text">MINHA MARCA</div>
-                
-                <!-- 
-                OPÇÃO 2: Logo como imagem (descomente e ajuste a URL)
-                <img src="https://exemplo.com/sua-logo.png" alt="Logo" class="logo">
-                -->
             </div>
 
-            <!-- Seção de perfil com foto -->
             <div class="profile-section">
                 <div class="profile-photo">
-                    <!-- 
-                    PARA SUBSTITUIR A FOTO DE PERFIL:
-                    Substitua o src abaixo pela URL da sua foto
-                    Mantenha a estrutura para preservar o estilo circular
-                    -->
                     <img src="logo.png" alt="Foto de perfil">
                 </div>
                 <div class="profile-info">
-                    <!-- SUBSTITUA SEU NOME AQUI -->
                     <h1>Dschurros</h1>
-                    
-                    <!-- SUBSTITUA SUA DESCRIÇÃO AQUI -->
                     <p>Espalhando doçura em cada mordida. Experimente a felicidade hoje!.</p>
                     
-                    <!-- Redes sociais abaixo do nome -->
                     <div class="social-icons">
-                        <!-- 
-                        SUBSTITUA OS LINKS DAS REDES SOCIAIS:
-                        Altere o href para seus perfis reais
-                        -->
                         <a href="https://instagram.com/seuperfil" class="social-icon" target="_blank">
                             <i class="fab fa-instagram"></i>
                         </a>
                         <a href="https://linkedin.com/in/seuperfil" class="social-icon" target="_blank">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://twitter.com/seuperfil" class="social-icon" target="_blank">
-                            <i class="fab fa-twitter"></i>
+                        <!-- Ícone X (Twitter) atualizado -->
+                        <a href="https://x.com/seuperfil" class="social-icon" target="_blank">
+                            <i class="fab fa-x-twitter"></i>
                         </a>
-                        <a href="https://github.com/seuperfil" class="social-icon" target="_blank">
-                            <i class="fab fa-github"></i>
+                        <!-- Ícone Threads atualizado -->
+                        <a href="https://threads.net/seuperfil" class="social-icon" target="_blank">
+                            <i class="fab fa-threads"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Apenas 2 links principais -->
             <div class="links-section">
-                <!-- 
-                LINK 1: SITE
-                Substitua o href pelo link do seu site
-                -->
                 <a href="https://rayraymaster.github.io/dschurros" class="link-item" target="_blank">
                     <div class="link-icon">
                         <i class="fas fa-globe"></i>
@@ -336,25 +574,19 @@
                     </div>
                 </a>
 
-                <!-- 
-                LINK 2: CONTATO
-                Substitua o href pelo seu e-mail
-                -->
                 <a href="mailto:dschurros@gmail.com" class="link-item">
                     <div class="link-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <div class="link-text">
                         <h3>Contato</h3>
-                        <p>Entre em contato para dúvidas/p>
+                        <p>Entre em contato para dúvidas</p>
                     </div>
                 </a>
             </div>
 
             <div class="footer">
-                <!-- SUBSTITUA AS INFORMAÇÕES DO RODAPÉ -->
                 <p>© 2025 Dschurros. Todos os direitos reservados.</p>
-               
             </div>
         </div>
     </div>
@@ -381,6 +613,17 @@
             
             icon.addEventListener('mouseleave', function() {
                 this.style.boxShadow = 'none';
+            });
+        });
+        
+        // Touch feedback para dispositivos móveis
+        document.querySelectorAll('.link-item, .social-icon').forEach(element => {
+            element.addEventListener('touchstart', function() {
+                this.style.opacity = '0.8';
+            });
+            
+            element.addEventListener('touchend', function() {
+                this.style.opacity = '1';
             });
         });
     </script>
